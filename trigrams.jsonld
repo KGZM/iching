@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "trigram figure": "http://schema.org/Text",
+    "binary representation": "http://schema.org/Number",
+    "name": "http://schema.org/Text",
+    "image": "http://schema.org/Text",
+    "direction": "http://schema.org/Text",
+    "family relationship": "http://schema.org/Text",
+    "body part": "http://schema.org/Text",
+    "attribute":
+    "stage/stage":
+    "animal":
+    "latin": {
+      "@type": "text"
+      "@language": "english"
+    }
+    "chinese" : {
+      "@type": ""
+    }
+  }
+} 
