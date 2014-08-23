@@ -4,9 +4,9 @@ hexagram = nil
 mode = nil
 count = 0
 lineno = 0
+
 file = File.open("hexagrams.txt", 'r')
-text = file.read
-text.each_line do |line|
+file.read.each_line do |line|
   case line
   # Extract number and name of hexagram.
   when /^\s+(\d+)\.\s+(.*)$/
@@ -26,9 +26,6 @@ text.each_line do |line|
   when /THE IMAGE/
     mode = :image
   when /THE LINES/
-    if lineno != 6
-      # puts "#{hexagram[:number].to_i - 1}: #{lineno}"
-    end
     mode = :lines
     hexagram[:lines] = []
     lineno = 0
@@ -50,7 +47,6 @@ text.each_line do |line|
         when /(Six|Nine).*(beginning|first|second|third|fourth|fifth|top).*(:|\.)/
           lineno += 1
           hexagram[:lines][lineno] = {type: $1, position: $2, translation: "", interpretation: ""}
-          # puts "#{hexagram[:number]}, #{$1} #{$2} #{$3}"
         when /^(\t| {3,})\s*(.*)/ 
           hexagram[:lines][lineno][:translation] += "#{$2}\n"
         else
@@ -58,11 +54,11 @@ text.each_line do |line|
         end
       end
     else
-      # puts "#{mode.inspect}:  #{line}"
       hexagram[mode][:interpretation] += line
     end
   end
 end
 file.close
 hexagrams.push hexagram
+hexagrams.shift
 puts hexagrams.to_json

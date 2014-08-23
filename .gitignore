@@ -1,0 +1,7 @@
+node_modules
+*.swp
+*.swo
+dist
+.tmp
+.sass-cache
+app/bower_components
