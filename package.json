@@ -29,7 +29,12 @@
     "time-grunt": "~0.1.0",
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "karma-ng-scenario": "~0.1.0",
-    "grunt-karma": "~0.8.3"
+    "grunt-karma": "~0.8.3",
+    "connect-modrewrite": "~0.7.7",
+    "karma-jasmine": "~0.1.5",
+    "karma-chrome-launcher": "~0.1.4",
+    "karma-firefox-launcher": "~0.1.3",
+    "karma-phantomjs-launcher": "~0.1.4"
   },
   "engines": {
     "node": ">=0.8.0"

@@ -316,6 +316,11 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
+      },
+      server: {
+        configFile: 'karma.conf.js',
+        singleRun: false,
+        autoWatch: true
       }
     },
     cdnify: {
@@ -348,22 +353,26 @@ module.exports = function (grunt) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
     }
-
-    grunt.task.run([
+    var serverTasks = [
       'clean:server',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
-      'open',
-      'watch'
-    ]);
+      //'open',
+      'watch',
+    ];
+    if (false && target === 'test') {
+      serverTasks.push('karma:server');
+    }
+
+    grunt.task.run(serverTasks);
   });
 
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
+    //'connect:test',
     'karma'
   ]);
 
