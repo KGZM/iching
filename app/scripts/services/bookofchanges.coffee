@@ -39,4 +39,38 @@ angular.module('ichingApp')
               return trigram
           return null
     }
+    @fromRoll = (roll) =>
+      hexagramFormulas = [""] 
+      changingLine = null
+      changing = false
+      for position, index in roll
+        if position in [6,9] and not changing
+          changing = true
+          changingLine = index
+          hexagramFormulas.push hexagramFormulas[0]
+          hexagramFormulas[1] += if roll <= 7 then 1 else 0
+        else if changing
+          hexagramFormulas[1] += if roll <= 7 then 0 else 1
+        hexagramFormulas[0] += if roll <= 7 then 0 else 1
+      $q.all(for formula in hexagramFormulas
+        trigrams = [formula[0..2], formula[3..6]]
+        $q.all(@trigrams.byBinary(t) for t in trigrams)
+        .then (trigrams) -> trigrams
+      )
+      .then (trigramPairs) =>
+        console.log "pairs", trigramPairs
+        $q.all(for pair in trigramPairs
+          ids = (parseInt(t.id, 10) for t in pair)
+          @hexagrams.byTrigrams(ids)
+          .then (hexagram) => {hexagram, trigrams: pair}
+        )
+      .then (result) -> {roll, changing, changingLine, result}
+
+
+
+
+
+
+
+
     return this
