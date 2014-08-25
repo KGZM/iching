@@ -1,7 +1,7 @@
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
-@import "bootstrap-sass/lib/bootstrap";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 
 /* Put your CSS here */
 html, body {
@@ -29,4 +29,13 @@ body {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+}
+
+h2 {
+    color: blue;
+}
+
+
+.hexagram {
+    font-size: 128px;
 }
