@@ -1,0 +1,10 @@
+<h2>Consult The Book Of Changes</h2>
+{{trigrams}}
+{{hexagram}}
+<h3 ng-click="roll()">Rollo.</h3>
+<ul>
+  <li ng-click="setMode('computer')">Computer</li>
+</ul>
+<div ng-switch="mode">
+  <div ng-switch-when="computer">Computah!</div>
+</div>

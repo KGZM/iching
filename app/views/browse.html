@@ -1,0 +1,5 @@
+<p>This is the browse view.</p>
+<h1>{{hexagram.character}}</h1>
+<div ng-repeat="hexagram in hexagrams">
+  <a ng-href="/#/browse/{{hexagram.id}}">{{hexagram.id}} {{hexagram.character}}</a>
+</div>
