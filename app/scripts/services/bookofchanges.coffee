@@ -19,7 +19,7 @@ angular.module('ichingApp')
         promise.then (data) ->
           for hexagram in data.hexagrams
             if hexagram.trigrams[0] is trigrams[0] and
-            hexagram.trigrams[0] is trigrams[0]
+            hexagram.trigrams[1] is trigrams[1]
               return hexagram
           return null
     }
@@ -44,26 +44,25 @@ angular.module('ichingApp')
       changingLine = null
       changing = false
       for position, index in roll
-        if position in [6,9] and not changing
+        if position in "69" and not changing
           changing = true
-          changingLine = index
+          changingLine = index + 1
           hexagramFormulas.push hexagramFormulas[0]
-          hexagramFormulas[1] += if roll <= 7 then 1 else 0
+          hexagramFormulas[1] += if position in "79" then 0 else 1
         else if changing
-          hexagramFormulas[1] += if roll <= 7 then 0 else 1
-        hexagramFormulas[0] += if roll <= 7 then 0 else 1
-      $q.all(for formula in hexagramFormulas
+          hexagramFormulas[1] += if position in "79" then 1 else 0
+        hexagramFormulas[0] += if position in "79" then 1 else 0
+      $q.all(hexagramFormulas.map (formula) =>
         trigrams = [formula[0..2], formula[3..6]]
-        $q.all(@trigrams.byBinary(t) for t in trigrams)
-        .then (trigrams) -> trigrams
+        $q.all trigrams.map (t) => @trigrams.byBinary(t)
+        .then (trigrams) ->  trigrams
       )
       .then (trigramPairs) =>
-        console.log "pairs", trigramPairs
-        $q.all(for pair in trigramPairs
-          ids = (parseInt(t.id, 10) for t in pair)
+        console.log trigramPairs
+        $q.all trigramPairs.map (pair) =>
+          ids = (pair.map (t) -> parseInt(t.id, 10))
           @hexagrams.byTrigrams(ids)
-          .then (hexagram) => {hexagram, trigrams: pair}
-        )
+          .then (hexagram) -> {hexagram, trigrams: pair}
       .then (result) -> {roll, changing, changingLine, result}
 
 
