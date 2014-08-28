@@ -8,6 +8,7 @@ angular.module('ichingApp')
           <path ng-show="line.type == 'yin'" ng-attr-stroke-width="{{linestrokewidth}}" stroke="#000" stroke-dasharray="40,20,40" ng-attr-d="M0,{{height - $index * spacing}} l100,0"/>
           <circle ng-show="line.type == 'yang' && line.old" cx="50" ng-attr-cy="{{height - $index * spacing}}" r="10" stroke="#000" stroke-width="2" fill="transparent"></circle>
           <path ng-show="line.type == 'yang'" ng-attr-stroke-width="{{linestrokewidth}}" stroke="#000" stroke-dasharray="" ng-attr-d="M0,{{height - $index * spacing}} l100,0"/>
+          <path ng-show="line.type == 'yin' && line.old" stroke-width="2" stroke="#000" stroke-dasharray="" ng-attr-d="M40,{{height - $index * spacing - 10}} l20,20 m0,-20 l-20,20"/>
         </g>
       </svg>
     """
