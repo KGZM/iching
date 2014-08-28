@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('ichingApp', ['ngRoute'])
+angular.module('ichingApp', ['ngRoute', 'ngSanitize'])
   .config ($routeProvider, $locationProvider) ->
     #$locationProvider.html5Mode(true)
     $routeProvider

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-sm-12">
     <h2>Consult The Book Of Changes</h2>
   </div>
 </div>
@@ -26,31 +26,33 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-sm-6">
     <h3>The Image</h3>
-    {{result.result[0].hexagram.image}}
-    }
+    <p ng-bind-html="result.result[0].hexagram.image | linebreaks"></p>
   </div>
-  <div class="col-md-6">
+  <div class="col-sm-6 hidden-xs">
     <h3>The Image</h3>
-    {{result.result[1].hexagram.image}}
+    <p ng-bind-html="result.result[1].hexagram.image | linebreaks"></p>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-sm-6">
     <h3>The Judgement</h3>
-    {{result.result[0].hexagram.judgement}}
+    <p ng-bind-html="result.result[0].hexagram.judgement | linebreaks"></p>
   </div>
-  <div class="col-md-6">
+  <div class="col-sm-6 hidden-xs">
     <h3>The Judgement</h3>
-    {{result.result[1].hexagram.judgement}}
+    <p ng-bind-html="result.result[1].hexagram.judgement | linebreaks"></p>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-sm-6">
     <h3>Changing Lines</h3>
-    {{result.result[0].hexagram.lines[result.changingLine].description}}
+    <p ng-bind-html="result.result[0].hexagram.lines[result.changingLine].description | linebreaks"></p>
   </div>
+</div>
+<div class="row">
+
 </div>
 <div class="row">
   <div class="span12">

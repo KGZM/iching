@@ -40,7 +40,7 @@ angular.module('ichingApp')
           return null
     }
     @fromRoll = (roll) =>
-      hexagramFormulas = [""] 
+      hexagramFormulas = [""]
       changingLine = null
       changing = false
       for position, index in roll
@@ -58,7 +58,6 @@ angular.module('ichingApp')
         .then (trigrams) ->  trigrams
       )
       .then (trigramPairs) =>
-        console.log trigramPairs
         $q.all trigramPairs.map (pair) =>
           ids = (pair.map (t) -> parseInt(t.id, 10))
           @hexagrams.byTrigrams(ids)
