@@ -18,7 +18,8 @@ angular.module('ichingApp')
         else if changing
           formulas[1] += if position in "79" then 1 else 0
           rolls[1] += if position in "79" then 7 else 8
-
+        else
+          rolls[1] += if position in "79" then 7 else 8
         formulas[0] += if position in "79" then 1 else 0
       {rolls, formulas, changing, changingLine}
 
