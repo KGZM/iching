@@ -4,71 +4,55 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-offset-1 col-xs-3 col-sm-2 text-center">
+  <div class="col-xs-3 text-center">
     <!-- {{result.result[0].hexagram.character}} -->
     <hexagram-svg hexagram-roll="result.rolls[0]"></hexagram-svg>
   </div>
-  <div class="col-xs-5 col-sm-3 text-center">
+  <div class="col-xs-3">
     <h3>
       {{result.result[0].hexagram.name}}
     </h3>
   </div>
-  <div class="col-xs-3 col-sm-2 col-sm-offset-1 text-center hidden-xs">
-    <hexagram-svg hexagram-roll="result.rolls[0]"></hexagram-svg>
+  <div class="col-xs-3 text-center">
+    <span class="hexagram">
+    {{result.result[1].hexagram.character}}
+    </span>
   </div>
-  <div class="col-xs-3 col-sm-3 hidden-xs text-center">
+  <div class="col-xs-3">
     <h3>
       {{result.result[1].hexagram.name}}
     </h3>
   </div>
 </div>
 <div class="row">
-  <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result">
+  <div class="col-sm-6">
     <h3>The Image</h3>
-    <p ng-bind-html="result.hexagram.image | linebreaks"></p>
+    <p ng-bind-html="result.result[1].hexagram.image | linebreaks"></p>
+  </div>
+  <div class="col-sm-6 hidden-xs">
+    <h3>The Image</h3>
+    <p ng-bind-html="result.result[1].hexagram.image | linebreaks"></p>
   </div>
 </div>
 <div class="row">
-  <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result">
+  <div class="col-sm-6">
     <h3>The Judgement</h3>
-    <p ng-bind-html="result.hexagram.judgement | linebreaks"></p>
+    <p ng-bind-html="result.result[0].hexagram.judgement | linebreaks"></p>
+  </div>
+  <div class="col-sm-6 hidden-xs">
+    <h3>The Judgement</h3>
+    <p ng-bind-html="result.result[1].hexagram.judgement | linebreaks"></p>
   </div>
 </div>
 <div class="row">
-  <div class="hexagram-text">
+  <div class="col-sm-6">
     <h3>Changing Lines</h3>
     <p ng-bind-html="result.result[0].hexagram.lines[result.changingLine].description | linebreaks"></p>
   </div>
 </div>
+<div class="row">
 
-<!-- Butcher for phone column -->
-<div class="row visible-xs">
-  <div class="col-xs-3 text-center">
-    <!-- {{result.result[0].hexagram.character}} -->
-    <hexagram-svg hexagram-roll="result.rolls[1]"></hexagram-svg>
-  </div>
-    <div class="col-xs-5 text-center">
-      <h3>
-        {{result.result[1].hexagram.name}}
-      </h3>
-  </div>
 </div>
-<div class="visible-xs">
-  <div class="row">
-    <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result | limitTo: -1">
-      <h3>The Image</h3>
-      <p ng-bind-html="result.hexagram.image | linebreaks"></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result | limitTo: -1">
-      <h3>The Judgement</h3>
-      <p ng-bind-html="result.hexagram.judgement | linebreaks"></p>
-    </div>
-  </div>
-</div>
-
-
 <div class="row">
   <div class="span12">
     <h3 ng-click="roll()">Rollo.</h3>
