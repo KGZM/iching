@@ -44,9 +44,9 @@ h2 {
 
 
 .hexagram-text {
-  @include make-sm-column(5);
+  @include make-sm-column(6);
   @include make-xs-column(12);
-  @include make-sm-column-offset(1);
+  // @include make-sm-column-offset(1);
 }
 .hexagram-2 {
   // @include responsive-invisibility('.hidden-xs');

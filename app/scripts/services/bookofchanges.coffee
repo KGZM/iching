@@ -43,7 +43,7 @@ angular.module('ichingApp')
       $q.all(formulas.map (formula) =>
         trigrams = [formula[0..2], formula[3..6]]
         $q.all trigrams.map (t) => @trigrams.byBinary(t)
-        .then (trigrams) ->  trigrams
+        .then angular.identity
       )
       .then (trigramPairs) =>
         $q.all trigramPairs.map (pair) =>

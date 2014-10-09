@@ -4,19 +4,19 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-offset-1 col-xs-3 col-sm-2 text-center">
+  <div class="col-sm-offset-0 col-xs-3 col-sm-2 text-center">
     <!-- {{result.result[0].hexagram.character}} -->
     <hexagram-svg hexagram-roll="result.rolls[0]"></hexagram-svg>
   </div>
-  <div class="col-xs-5 col-sm-3 text-center">
+  <div class="col-xs-9 col-sm-4 text-center">
     <h3>
       {{result.result[0].hexagram.name}}
     </h3>
   </div>
-  <div class="col-xs-3 col-sm-2 col-sm-offset-1 text-center hidden-xs">
+  <div class="col-xs-3 col-sm-2 col-sm-offset-0 text-center hidden-xs">
     <hexagram-svg hexagram-roll="result.rolls[1]"></hexagram-svg>
   </div>
-  <div class="col-xs-3 col-sm-3 hidden-xs text-center">
+  <div class="col-xs-3 col-sm-4 hidden-xs text-center">
     <h3>
       {{result.result[1].hexagram.name}}
     </h3>
@@ -47,7 +47,7 @@
     <!-- {{result.result[0].hexagram.character}} -->
     <hexagram-svg hexagram-roll="result.rolls[1]"></hexagram-svg>
   </div>
-    <div class="col-xs-5 text-center">
+    <div class="col-xs-9 text-center">
       <h3>
         {{result.result[1].hexagram.name}}
       </h3>
@@ -71,7 +71,7 @@
 
 <div class="row">
   <div class="span12">
-    <h3 ng-click="roll()">Rollo.</h3>
+    <h3 ng-click="roll()">Roll the dice.</h3>
     <ul>
       <li ng-click="setMode('computer')">Computer</li>
     </ul>
