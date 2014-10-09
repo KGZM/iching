@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2>Consult The Book Of Changes</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-offset-0 col-xs-3 col-sm-2 text-center">
+    <!-- {{result.result[0].hexagram.character}} -->
+    <hexagram-svg hexagram-roll="result.rolls[0]"></hexagram-svg>
+  </div>
+  <div class="col-xs-9 col-sm-4 text-center">
+    <h3>
+      {{result.result[0].hexagram.name}}
+    </h3>
+  </div>
+  <div class="col-xs-3 col-sm-2 col-sm-offset-0 text-center hidden-xs">
+    <hexagram-svg hexagram-roll="result.rolls[1]"></hexagram-svg>
+  </div>
+  <div class="col-xs-3 col-sm-4 hidden-xs text-center">
+    <h3>
+      {{result.result[1].hexagram.name}}
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result">
+    <h3>The Image</h3>
+    <p ng-bind-html="result.hexagram.image | linebreaks"></p>
+  </div>
+</div>
+<div class="row">
+  <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result">
+    <h3>The Judgement</h3>
+    <p ng-bind-html="result.hexagram.judgement | linebreaks"></p>
+  </div>
+</div>
+<div class="row">
+  <div class="hexagram-text">
+    <h3>Changing Lines</h3>
+    <p ng-bind-html="result.result[0].hexagram.lines[result.changingLine].description | linebreaks"></p>
+  </div>
+</div>
+
+<!-- Butcher for phone column -->
+<div class="row visible-xs">
+  <div class="col-xs-3 text-center">
+    <!-- {{result.result[0].hexagram.character}} -->
+    <hexagram-svg hexagram-roll="result.rolls[1]"></hexagram-svg>
+  </div>
+    <div class="col-xs-9 text-center">
+      <h3>
+        {{result.result[1].hexagram.name}}
+      </h3>
+  </div>
+</div>
+<div class="visible-xs">
+  <div class="row">
+    <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result | limitTo: -1">
+      <h3>The Image</h3>
+      <p ng-bind-html="result.hexagram.image | linebreaks"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="hexagram-text hexagram-{{$index + 1}}" ng-repeat="result in result.result | limitTo: -1">
+      <h3>The Judgement</h3>
+      <p ng-bind-html="result.hexagram.judgement | linebreaks"></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="span12">
+    <h3 ng-click="roll()">Roll the dice.</h3>
+    <ul>
+      <li ng-click="setMode('computer')">Computer</li>
+    </ul>
+    <div ng-switch="mode">
+      <div ng-switch-when="computer">Computah!</div>
+    </div>
+  </div>
+</div>
